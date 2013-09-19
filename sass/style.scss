@@ -1,0 +1,390 @@
+@import url(http://fonts.googleapis.com/css?family=Istok+Web|Asap|Varela);
+
+@font-face {
+  font-family: 'ghostmoon';
+  src:url('../../assets/css/fonts/ghostmoon.eot');
+  src:url('../../assets/css/fonts/ghostmoon.eot?#iefix') format('embedded-opentype'),
+    url('../../assets/css/fonts/ghostmoon.woff') format('woff'),
+    url('../../assets/css/fonts/ghostmoon.ttf') format('truetype'),
+    url('../../assets/css/fonts/ghostmoon.svg#ghostmoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@function parseInt($n) { /* 2 */
+  @return $n / ($n * 0 + 1);
+}
+
+@mixin rem($property, $values) {
+  $px : (); /* 3 */
+  $rem: (); /* 3 */
+
+  @each $value in $values { /* 4 */
+
+    @if $value == 0 or $value == auto { /* 5 */
+      $px : append($px , $value);
+      $rem: append($rem, $value);
+    }
+
+    @else {
+      $unit: unit($value);    /* 6 */
+      $val: parseInt($value); /* 6 */
+
+      @if $unit == "px" {  /* 7 */
+        $px : append($px,  $value);
+        $rem: append($rem, ($val / 10 + rem));
+      }
+
+      @if $unit == "rem" { /* 7 */
+        $px : append($px,  ($val * 10 + px));
+        $rem: append($rem, $value);
+      }
+    }
+  }
+
+  @if $px == $rem {     /* 8 */
+    #{$property}: $px;  /* 9 */
+  } @else {
+    #{$property}: $px;  /* 9 */
+    #{$property}: $rem; /* 9 */
+  }
+}
+
+html {
+    font-size: 62.5%; /* 1 */
+    background-color: #d1e0f5;
+    background: #d1e0f5 linear-gradient(180deg, #faf5f4 10%, #d1e0f5 86%) no-repeat;
+}
+
+body {
+ @include rem(font-size, 1.6rem);
+ line-height: 1.6em;
+ font-family: 'Varela', sans-serif;
+ width: 100%;
+}
+
+a {
+  color: rgba(130, 95,150,1);
+  text-decoration: none;
+
+  &:hover {
+     background: linear-gradient(to top, rgba(255,255,255, 0.2), rgba(255,255,255,0));
+     box-shadow: 0 1px 0 0 rgba(0,0,0,0.2);
+  }
+}
+
+.ghost-cat {
+  position: relative;
+  max-width: 1600px;
+  min-width: 330px;
+  margin: 0 auto 0px auto;
+  padding: 0 40px 0px 40px;
+  color: #888;
+}
+.ico {
+  font-family: "ghostmoon", sans-serif;
+  vertical-align: middle;
+}
+.inspiration {
+  width: 72%;
+  float: left;
+  padding-top: 20px;
+  padding-bottom: 80px;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    float: none;
+  }
+
+  .clear {
+     clear: both;
+  }
+}
+
+.propogation {
+  padding-top: 20px;
+  width: 28%;
+  float: left;
+
+  @media screen and (max-width: 800px) {
+    width: 100%;
+    float: none;
+  }
+
+  .yarn {
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+    @media screen and (min-width: 800px) {
+      display: block;
+    }
+    @media screen and (min-width: 1200px) {
+      display: block;
+    }
+  }
+}
+
+.motion {
+  clear: both;
+}
+
+.con {
+  width: 100%;
+  max-width: 800px;
+  margin: 0px auto 20px auto;
+  background: #fff;
+  box-shadow: 0 2px 1px 1px rgba(0,0,0,.05);
+  position: relative;
+  border-radius: 3px;
+
+  /*@media screen and (min-width: 1300px) {
+    width: 46%;
+    margin: 0px 2% 20px 2%;
+    float: left;
+  } */
+
+  .listen {
+   @include rem(font-size, 2rem);
+   font-family: 'Istok Web', sans-serif;
+   padding: 20px;
+   position: relative;
+   overflow: hidden;
+
+   a {
+      color: #777;
+   }
+
+   .meta-expand {
+      text-align: center;
+      position: absolute;
+      line-height: 30px;
+      @include rem(font-size, 1.5rem);
+      display: block;
+      width: 40px;
+      color: rgba(130, 95,150,0.2);
+      top:50%;
+      margin-top: -15px;
+      right: -17px;
+      font-weight: normal;
+      text-shadow: 0 1px 0 #fff;
+      cursor: pointer;
+
+      &:hover {
+        right: -13px;
+        color: rgba(130, 95,150,0.6);
+        box-shadow: none;
+      }
+    }
+  }
+  .meta-data {
+    @include rem(font-size, 1.2rem);
+    @include rem(line-height, 1.8rem);
+    padding: 10px 0 0 0;
+    border-top: 1px solid #f1f1f1;
+  }
+  .consider {
+    padding: 20px;
+    color: #555;
+    box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
+    border-bottom: 1px solid #eee;
+    // Content is king......
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: inline-block;
+    }
+  }
+
+  .traverse {
+    @include rem(font-size, 1.4rem);
+    padding: 20px;
+    a {
+     color: #aaa;
+    }
+  }
+}
+
+.con--single {
+  @extend .con;
+}
+
+.yarn {
+  // 350 = 160px
+  @include rem(font-size, 35rem);
+
+  $orange:  rgba(255,255,0,0.1);
+  $red:     rgba(255,160,80,0.5);
+  $teal:    rgba(100,255,220,1);
+  $white:   rgba(255,155,155,0.3);
+
+  position: relative;
+  text-align: center;
+  line-height: 0.18em;
+  color: rgba(130, 95,150,1);
+  margin-bottom: 20px;
+
+  figure {
+    vertical-align: middle;
+    font-size: 1em;
+    text-indent: 0.00857em;
+    font-family: 'ghostmoon', sans-serif;
+    color: rgba(80, 25, 90, 0.75);
+    display: block;
+    border-radius: 0.028571em;
+    text-shadow: 0 0.008714em 0 rgba(255,255,255,0.3);
+    box-shadow: inset 0 -0.01714em 0 0px rgba(0,0,65,0.2),
+                inset 0 0 0.114em 0.01714em      rgba(50,0,50,0.1),
+                      0 0px 0.04857em -0.01714em #000,
+                      0 0.04285em 0.028571em -0.0142em rgba(250,250,250,0.2);
+    background: linear-gradient(to top,
+                                $orange,
+                                $white),
+                linear-gradient(to right,
+                                $red,
+                                $teal),
+                #fff;
+    height: 0.457em;
+    line-height: 0.186em;
+    overflow: hidden;
+    max-width: 0.457em;
+    margin: 0 auto 0 auto;
+  }
+  a {
+  color: rgba(130, 95,150,1);
+  }
+  span {
+      display: block;
+      font-size: 0.1em;
+  }
+  @media screen and (min-width: 1024px) {
+    @include rem(font-size, 45rem);
+  }
+  @media screen and (min-width: 1200px) {
+    @include rem(font-size, 50rem);
+  }
+  @media screen and (min-width: 1600px) {
+    @include rem(font-size, 60rem);
+  }
+
+}
+
+.first-class {
+  text-align: center;
+  padding: 10px 10px 10px 20px;
+  margin-bottom: 20px;
+
+  .direction {
+     display: none;
+     font-family: "Istok Web", arial, sans-serif;
+     line-height: 1.8em;
+
+     a {
+       color: #666;
+       text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+     }
+  }
+
+}
+
+.the-rest {
+     @extend .first-class;
+}
+
+.yarn--mobile {
+    @extend .yarn;
+    margin-top: 50px;
+    font-size: 34em;
+    @media screen and (max-width: 800px) {
+      display: block;
+    }
+    @media screen and (min-width: 800px) {
+      display: none;
+    }
+}
+.motion {
+
+  line-height: 60px;
+  position: fixed;
+  height: 60px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  z-index: 1;
+  box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
+
+  .yarn--footer {
+    @extend .yarn;
+    font-size: 100px;
+    position: absolute;
+    left: 20px;
+    top: 8px;
+  }
+
+  h6 {
+    @include rem(font-size, 1.6rem);
+    position: absolute;
+    left: 80px;
+    padding: 0;
+    margin: 0;
+    font-weight: normal;
+  }
+}
+.hide {
+  display: none;
+}
+
+.clear {
+  clear: both;
+}
+
+.traversal {
+  @include rem(font-size, 1.4rem);
+  text-align: center;
+  color: #91a0b5;
+  text-shadow: 0 2px 1px rgba(255,255,255,0.5);
+}
+
+.decide {
+  @include rem(font-size, 1.2rem);
+  position: absolute;
+  top: 0;
+  right: 20px;
+  line-height: 60px;
+
+  .ico {
+    @include rem(font-size, 1.6rem);
+    margin-left: 20px;
+  }
+
+  .copyright {
+    display: none;
+
+    @media screen and (min-width: 600px) {
+      display: inline;
+    }
+  }
+}
+
+[data-columns]::before { display: none; }
+
+.columns[data-columns]::before {
+  content: '1';
+}
+.column {
+  float: left;
+  width: 96%;
+  margin: 0px 2% 20px 2%;
+}
+
+@media screen and (min-width: 1440px) {
+
+  .columns[data-columns]::before {
+    content: '2';
+  }
+  .column {
+    width: 46%;
+  }
+
+}

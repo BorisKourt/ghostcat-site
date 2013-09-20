@@ -6,6 +6,10 @@ $(function(){
 
   $('.tr-twitter').click(function(e){
     mixpanel.track('Twitter');
+  });  
+
+  $('.sellfy-buy-button').click(function(e){
+    mixpanel.track('Clicked Buy');
   });
 
   $('.tr-repo').click(function(e){

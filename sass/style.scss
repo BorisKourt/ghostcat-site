@@ -50,6 +50,15 @@
   }
 }
 
+@mixin no-select() {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 @mixin text() {
   h1,h2,h3,h4,h5,h6,th {
       font-weight: normal;
@@ -210,10 +219,6 @@ a {
   }
 }
 
-.motion {
-  clear: both;
-}
-
 .con {
   width: 100%;
   max-width: 800px;
@@ -248,7 +253,8 @@ a {
       font-weight: normal;
       text-shadow: 0 1px 0 #fff;
       cursor: pointer;
-
+      @include no-select();
+      
       &:hover {
         right: -13px;
         color: rgba(130, 95,150,0.6);

@@ -50,6 +50,91 @@
   }
 }
 
+@mixin text() {
+  h1,h2,h3,h4,h5,h6,th {
+      font-weight: normal;
+      font-family: "Asap", arial, sans-serif;
+    }
+
+    p, ul, ol, object, input, code {
+      margin: 0 0 0.875em 0;
+    }
+
+    p, ul, ol, cite, table, code {
+      font-size: 0.875em;
+    }
+
+    section p,
+    section ul,
+    {
+      font-size: 0.8125em;
+      line-height: 1.5;
+    }
+
+    .caption {
+      text-align: right;
+      margin: -1.5em 0 2em 0;
+      color: #555;
+      font-style: italic;
+    }
+
+    img {
+      border: 0;
+      vertical-align: middle;
+    }
+
+    blockquote p {
+        font-size: 1em;
+        text-indent: -0.4em;
+        margin: 0 0 0.5em 0;
+        padding: 0 0 0 2em;
+        font-style: italic;
+        border-left: 1px solid #ccc;
+        color: #777;
+    }
+
+    cite {
+      display: block;
+      text-align: right;
+      font-style: normal;
+    }
+
+    pre {
+      background: #f8f8f8;
+      overflow: auto;
+      padding: 0.75em;
+      margin: 0 0 1em 0;
+      border-left: 1px solid #ccc;
+    }
+
+    code {
+      font-family: Consolata, monospace;
+      background: #f8f8f8;
+    }
+
+    fieldset {
+      border: 0;
+    }
+
+    ul,
+    ol {
+      padding: 0 0 0 1.2em;
+    }
+
+    li {
+      margin: 0 0 0.2em 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      margin: 0 auto;
+      display: inline-block;
+      box-shadow: 0 5px 20px -5px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+    }
+}
+
 html {
     font-size: 62.5%; /* 1 */
     background-color: #d1e0f5;
@@ -184,111 +269,8 @@ a {
     box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
     border-bottom: 1px solid #eee;
     @include rem(font-size, 1.8rem);
-
-    h1,h2,h3,h4,h5,h6,th {
-      font-weight: normal;
-      font-family: "Asap", arial, sans-serif;
-    }
-
-    h3 {
-      font-size: 0.875em;
-      line-height: 1.2;
-      margin: 0 0 0.5em 0;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    p+h3 {
-      margin: 2em 0 0.25em 0;
-    }
-
-    h3.date {
-      margin: 0 0 1.5em 0;
-      font-size: 0.81em;
-    }
-
-    h4 {
-      font-size: 0.875em;
-      font-weight: bold;
-    }
-
-    p, ul, ol, object, input, code {
-      margin: 0 0 0.875em 0;
-    }
-
-    p, ul, ol, cite, table, code {
-      font-size: 0.875em;
-    }
-
-    section p,
-    section ul,
-    {
-      font-size: 0.8125em;
-      line-height: 1.5;
-    }
-
-    .caption {
-      text-align: right;
-      margin: -1.5em 0 2em 0;
-      color: #555;
-      font-style: italic;
-    }
-
-    img {
-      border: 0;
-      vertical-align: middle;
-    }
-
-    blockquote p {
-        font-size: 1em;
-        text-indent: -0.4em;
-        margin: 0 0 0.5em 0;
-        padding: 0 0 0 2em;
-        font-style: italic;
-        border-left: 1px solid #ccc;
-        color: #777;
-    }
-
-    cite {
-      display: block;
-      text-align: right;
-      font-style: normal;
-    }
-
-    pre {
-      background: #f8f8f8;
-      overflow: auto;
-      padding: 0.75em;
-      margin: 0 0 1em 0;
-      border-left: 1px solid #ccc;
-    }
-
-    code {
-      font-family: Consolata, monospace;
-      background: #f8f8f8;
-    }
-
-    fieldset {
-      border: 0;
-    }
-
-    ul,
-    ol {
-      padding: 0 0 0 1.2em;
-    }
-
-    li {
-      margin: 0 0 0.2em 0;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      margin: 0 auto;
-      display: inline-block;
-      box-shadow: 0 5px 20px -5px rgba(0,0,0,0.4);
-      margin-bottom: 20px;
-    }
+    @include text();
+    
   }
 
   .traverse {
@@ -365,9 +347,21 @@ a {
 }
 
 .first-class {
-  text-align: center;
+  @include rem(font-size, 1.6rem);
+  line-height: 1.8em;
   padding: 10px 10px 10px 20px;
   margin-bottom: 20px;
+  background: transparentize(#d1e0f5, 0.9);
+  -webkit-box-shadow: 0 2px 1px 1px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 1px 1px rgba(0,0,0,0.05);
+  border-radius: 3px;
+
+  @include text();
+
+  li {
+    margin-bottom: 0.656em;
+    list-style: none;
+  }
 
   .direction {
      display: none;

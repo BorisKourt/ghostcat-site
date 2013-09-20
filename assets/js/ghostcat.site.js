@@ -8,7 +8,7 @@ $(function(){
     mixpanel.track('Twitter');
   });  
 
-  $('.sellfy-buy-button').click(function(e){
+  $('.sellfy').click(function(e){
     mixpanel.track('Clicked Buy');
   });
 

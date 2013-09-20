@@ -184,9 +184,13 @@ a {
     box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
     border-bottom: 1px solid #eee;
     @include rem(font-size, 1.8rem);
-    
+
+    h1,h2,h3,h4,h5,h6,th {
+      font-weight: normal;
+      font-family: "Asap", arial, sans-serif;
+    }
+
     h3 {
-      font-weight: bold;
       font-size: 0.875em;
       line-height: 1.2;
       margin: 0 0 0.5em 0;

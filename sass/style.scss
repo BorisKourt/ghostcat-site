@@ -137,12 +137,6 @@ a {
   position: relative;
   border-radius: 3px;
 
-  /*@media screen and (min-width: 1300px) {
-    width: 46%;
-    margin: 0px 2% 20px 2%;
-    float: left;
-  } */
-
   .listen {
    @include rem(font-size, 2rem);
    font-family: 'Istok Web', sans-serif;
@@ -176,23 +170,120 @@ a {
       }
     }
   }
+  
   .meta-data {
     @include rem(font-size, 1.2rem);
     @include rem(line-height, 1.8rem);
     padding: 10px 0 0 0;
     border-top: 1px solid #f1f1f1;
   }
+
   .consider {
     padding: 20px;
     color: #555;
     box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
     border-bottom: 1px solid #eee;
-    // Content is king......
+    @include rem(font-size, 1.8rem);
+    
+    h3 {
+      font-weight: bold;
+      font-size: 0.875em;
+      line-height: 1.2;
+      margin: 0 0 0.5em 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    p+h3 {
+      margin: 2em 0 0.25em 0;
+    }
+
+    h3.date {
+      margin: 0 0 1.5em 0;
+      font-size: 0.81em;
+    }
+
+    h4 {
+      font-size: 0.875em;
+      font-weight: bold;
+    }
+
+    p, ul, ol, object, input, code {
+      margin: 0 0 0.875em 0;
+    }
+
+    p, ul, ol, cite, table, code {
+      font-size: 0.875em;
+    }
+
+    section p,
+    section ul,
+    {
+      font-size: 0.8125em;
+      line-height: 1.5;
+    }
+
+    .caption {
+      text-align: right;
+      margin: -1.5em 0 2em 0;
+      color: #555;
+      font-style: italic;
+    }
+
+    img {
+      border: 0;
+      vertical-align: middle;
+    }
+
+    blockquote p {
+        font-size: 1em;
+        text-indent: -0.4em;
+        margin: 0 0 0.5em 0;
+        padding: 0 0 0 2em;
+        font-style: italic;
+        border-left: 1px solid #ccc;
+        color: #777;
+    }
+
+    cite {
+      display: block;
+      text-align: right;
+      font-style: normal;
+    }
+
+    pre {
+      background: #f8f8f8;
+      overflow: auto;
+      padding: 0.75em;
+      margin: 0 0 1em 0;
+      border-left: 1px solid #ccc;
+    }
+
+    code {
+      font-family: Consolata, monospace;
+      background: #f8f8f8;
+    }
+
+    fieldset {
+      border: 0;
+    }
+
+    ul,
+    ol {
+      padding: 0 0 0 1.2em;
+    }
+
+    li {
+      margin: 0 0 0.2em 0;
+    }
+
     img {
       max-width: 100%;
       height: auto;
       margin: 0 auto;
       display: inline-block;
+      box-shadow: 0 5px 20px -5px rgba(0,0,0,0.4);
+      margin-bottom: 20px;
     }
   }
 

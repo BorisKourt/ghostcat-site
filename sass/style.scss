@@ -1,4 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=Istok+Web|Asap|Varela);
+$support-for-original-webkit-gradients : false;
+$experimental-support-for-svg: true;
+@import "compass/css3/images";
+@import "compass/css3/box-shadow";
 
 @font-face {
   font-family: 'ghostmoon';
@@ -139,7 +143,7 @@
       height: auto;
       margin: 0 auto;
       display: inline-block;
-      box-shadow: 0 5px 20px -5px rgba(0,0,0,0.4);
+      @include box-shadow(0 5px 20px -5px rgba(0,0,0,0.4));
       margin-bottom: 20px;
     }
 }
@@ -147,7 +151,7 @@
 html {
     font-size: 62.5%; /* 1 */
     background-color: #d1e0f5;
-    background: #d1e0f5 linear-gradient(180deg, #f6f1f0 10%, #d1e0f5 86%) no-repeat;
+    @include background(#d1e0f5 linear-gradient(top, #f6f1f0 10%, #d1e0f5 86%) no-repeat);
 }
 
 body {
@@ -164,8 +168,8 @@ a {
   text-decoration: none;
 
   &:hover {
-     background: linear-gradient(to top, rgba(255,255,255, 0.2), rgba(255,255,255,0));
-     box-shadow: 0 1px 0 0 rgba(0,0,0,0.2);
+     @include background(linear-gradient(top, rgba(255,255,255, 0.2), rgba(255,255,255,0)));
+     @include box-shadow(0 1px 0 0 rgba(0,0,0,0.2));
   }
 }
 
@@ -224,7 +228,7 @@ a {
   max-width: 800px;
   margin: 0px auto 20px auto;
   background: #fff;
-  box-shadow: 0 2px 1px 1px rgba(0,0,0,.05);
+  @include box-shadow(0 2px 1px 1px rgba(0,0,0,.05));
   position: relative;
   border-radius: 3px;
 
@@ -273,11 +277,32 @@ a {
   .consider {
     padding: 20px;
     color: #555;
-    box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
+    @include box-shadow(0 0px 25px 1px rgba(0,0,0,0.1));
     border-bottom: 1px solid #eee;
     @include rem(font-size, 1.8rem);
     @include text();
-    
+    position: relative;
+    overflow: hidden;
+
+    .layover {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      line-height: 340px;
+      text-align: right;
+      @include background(linear-gradient(top left, rgba(255,255,255,0) 45%, rgba(255,255,255,1) 115%) no-repeat);
+
+      a {
+        margin-right: 20px;
+        text-shadow: 0 1px 0 #fff;
+        background: rgba(255,255,255,0.7);
+        span {
+          opacity: 0.5;
+        }
+      }
+    }
   }
 
   .traverse {
@@ -317,25 +342,40 @@ a {
     display: block;
     border-radius: 0.028571em;
     text-shadow: 0 0.008714em 0 rgba(255,255,255,0.3);
-    box-shadow: inset 0 -0.01714em 0 0px rgba(0,0,65,0.2),
+    @include box-shadow( inset 0 -0.01714em 0 0px rgba(0,0,65,0.2),
                 inset 0 0 0.114em 0.01714em      rgba(50,0,50,0.1),
                       0 0px 0.04857em -0.01714em #000,
-                      0 0.04285em 0.028571em -0.0142em rgba(250,250,250,0.2);
-    background: linear-gradient(to top,
-                                $orange,
-                                $white),
-                linear-gradient(to right,
-                                $red,
-                                $teal),
-                #fff;
+                      0 0.04285em 0.028571em -0.0142em rgba(250,250,250,0.2));
+    @include background(linear-gradient(top, $orange, $white), linear-gradient(left, $red, $teal), #fff);
     height: 0.457em;
     line-height: 0.186em;
     overflow: hidden;
+    width: 100%;
     max-width: 0.457em;
     margin: 0 auto 0 auto;
+    position: relative;
+
+    &.cover {
+      .yarn__cover {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .yarn__logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        max-width: 100%;
+        height: auto;
+        z-index: 2;
+      }
+    }
   }
   a {
-  color: rgba(130, 95,150,1);
+    color: rgba(130, 95,150,1);
   }
   span {
       display: block;
@@ -359,8 +399,7 @@ a {
   padding: 10px 10px 10px 20px;
   margin:0 10px 20px 10px;
   background: transparentize(#f1f0ff, 0.7);
-  -webkit-box-shadow: 0 2px 1px 1px rgba(0,0,0,0.05);
-  box-shadow: 0 2px 1px 1px rgba(0,0,0,0.05);
+  @include box-shadow(0 2px 1px 1px rgba(0,0,0,0.05));
   border-radius: 3px;
 
   @include text();
@@ -407,7 +446,7 @@ a {
   left: 0;
   background: #fff;
   z-index: 1;
-  box-shadow: 0 0px 25px 1px rgba(0,0,0,.1);
+  @include box-shadow(0 0px 25px 1px rgba(0,0,0,.1));
 
   .yarn--footer {
     @extend .yarn;
@@ -415,6 +454,8 @@ a {
     position: absolute;
     left: 20px;
     top: 8px;
+    width: 46px;
+    height: 46px;
   }
 
   h6 {

@@ -8,6 +8,17 @@ $(function(){
     mixpanel.track('Twitter');
   });  
 
+  $('.tr-demo').click(function(e){
+    mixpanel.track('Demo');
+  }); 
+
+  $('.cp_embed_iframe').click(function(e){
+    mixpanel.track('cford');
+  });  
+  $('.tr-cat').click(function(e){
+    mixpanel.track('catalan');
+  });    
+ 
   $('.sellfy').click(function(e){
     mixpanel.track('Clicked Buy');
   });
